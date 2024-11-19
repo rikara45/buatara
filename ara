@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat Ara</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 20%;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Fungsi untuk memulai alert dari awal
+        function startAlert() {
+            Swal.fire({
+                title: 'Hai!',
+                text: 'Kamu Ara kan?',
+                icon: 'question',
+                confirmButtonText: 'Ya, benar',
+                showCancelButton: true,
+                cancelButtonColor: "#d33",
+                cancelButtonText: 'Bukan'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Aku cuma pengen nyampein sesuatu..",
+                        confirmButtonText: 'Apatuh?'
+                    }).then(() => {
+                        Swal.fire({
+                            title: "Beneran nih pengen tau??",
+                            confirmButtonText: 'Benerr'
+                        }).then(() => {
+                            Swal.fire({
+                                title: "Tapi kamu harus mau dengerin apa yang aku bilang yaa",
+                                confirmButtonText: 'Iyaaa'
+                            }).then(() => {
+                                Swal.fire({
+                                    title: "Janjii yaaa??",
+                                    confirmButtonText: 'Iyaa Ih bawel',
+                                    showCancelButton: true,
+                                    cancelButtonColor: "#d33",
+                                    cancelButtonText: 'Lama Ah Males'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        // Aksi jika "Iya Ih bawel" ditekan
+                                        Swal.fire({
+                                            title: "Makasi ya udah sabar..",
+                                            text: "Aku tau kamu kecewa sama aku, kamu berekspetasi pun karena aku, aku minta maaf banget, aku gamau ngecewain kamu, aku cuma butuh waktu, plis jangan kaya gini terus, aku pengen Ara yang duluu, yang selalu happy ceria, aku pengen jadi alasan di balik senyum kamu. Sekali lagi maafin akuu plis, aku pengen perbaikin semuanya. Makasih ya :))"
+                                        });
+                                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                                        // Aksi jika "Lama Ah Males" ditekan
+                                        Swal.fire({
+                                            title: "Ih kok gitu sih..",
+                                            text: "Ulang Ulang Gamau tau!",
+                                            icon: "error"
+                                        }).then(() => {
+                                            // Kembali ke alert pertama
+                                            startAlert();
+                                        });
+                                    }
+                                });
+                            });
+                        });
+                    });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    // Jika tombol "Bukan" ditekan
+                    Swal.fire({
+                        title: "ISH KAMU MAH!",
+                        text: "Ulang Ulang Gamau Tau!",
+                        icon: "error"
+                    }).then(() => {
+                        // Kembali ke alert pertama
+                        startAlert();
+                    });
+                }
+            });
+        }
+
+        // Memulai alert pertama kali
+        document.addEventListener('DOMContentLoaded', startAlert);
+    </script>
+    
+</body>
+</html>
